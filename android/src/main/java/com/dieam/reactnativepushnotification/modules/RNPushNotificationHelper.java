@@ -1,3 +1,4 @@
+
 package com.dieam.reactnativepushnotification.modules;
 
 
@@ -27,6 +28,7 @@ import com.facebook.datasource.DataSource;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.common.Priority;
 import com.facebook.imagepipeline.core.ImagePipeline;
+import com.facebook.imagepipeline.core.ImagePipelineFactory;
 import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.image.CloseableImage;
 import com.facebook.imagepipeline.request.ImageRequest;
@@ -104,6 +106,7 @@ public class RNPushNotificationHelper {
             sendNotificationWithImage( bundle, null );
             return;
         }
+        ImagePipelineFactory.initialize(mContext);
         ImagePipeline imagePipeline = Fresco.getImagePipeline();
 
         ImageRequest imageRequest = ImageRequestBuilder
@@ -280,3 +283,4 @@ public class RNPushNotificationHelper {
         getAlarmManager().cancel(getScheduleNotificationIntent(b));
     }
 }
+
